@@ -22,52 +22,89 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# NestJS Project: Library Management
 
-## Installation
+This project is a RESTful API developed with NestJS that allows the management of tournaments.
+video games (esports) at the Colombian level. The API is designed following REST conventions and is documented using Swagger..
 
-```bash
-$ npm install
-```
+## Table of Contents
 
-## Running the app
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Execute the Project](#execute-the-project)
+- [API Documentation](#api-documentation)
+- [Available Scripts](#available-scripts)
+- [Contribute](#contribute)
+- [License](#license)
 
-```bash
-# development
-$ npm run start
+## Prerequisites
 
-# watch mode
-$ npm run start:dev
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+- Vercel for deployment (optional)
 
-# production mode
-$ npm run start:prod
-```
+## Facility
 
-## Test
+1. Clone the repository:
 
-```bash
-# unit tests
-$ npm run test
+     ´´´bash
+   git clone https://github.com/holas1356/Tournaments.git
+   cd tournament
+   ´´´
 
-# e2e tests
-$ npm run test:e2e
+2.Install the dependencies:
 
-# test coverage
-$ npm run test:cov
-```
+   ´´´bash
+   npm install
+   ´´´
 
-## Support
+## Environment Variables
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Create a `.env` file in the project root and add the following variables:
 
-## Stay in touch
+´´´env
+DB_PORT="5432"
+POSTGRES_USER="default"
+POSTGRES_HOST="ejemplo"
+POSTGRES_PASSWORD="ejemplo"
+POSTGRES_DATABASE="ejemplo"
+DB_SSL=true
+´´´
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Execute the Project
 
-## License
+1.Run the migrations to configure the database:
 
-Nest is [MIT licensed](LICENSE).
+   ´´´bash
+   npm run typeorm migration:run
+   ´´´
+
+2. Start the development server:
+
+   ´´´bash
+   npm run start:dev
+   ´´´
+
+   The API will be available in`http://localhost:3000`.
+
+## API documentation
+
+The API documentation is generated with Swagger. To access it, open `http://localhost:3000/api` in your browser.
+
+## Available Scripts
+
+- `start`: Start the server in production mode.
+- `start:dev`: Start the server in development mode.
+- `start:debug`: Start the server in debug mode.
+- `build`: Compile the project.
+- `test`: Run the tests.
+- `typeorm migration:run`: Run database migrations.
+
+## Contribute
+
+1. Create a new branch (`git checkout -b feature/new-feature`)
+2. Make the necessary changes and commit (`git commit -m 'Add new functionality'`)
+3. Upload the changes (`git push origin feature/new-feature`)
+4. Open a Pull Request

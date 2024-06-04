@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-
 import { TournamentsModule } from './tournaments/tournaments.module';
 import { PlayersModule } from './players/players.module';
 import { ResultsModule } from './results/results.module';
 import { ConfigModule } from '@nestjs/config';
-import { ParticipantsModule } from './participants/participants.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Participant } from './participants/entities/participant.entity';
 import { Player } from './players/entities/player.entity';
 import { Result } from './results/entities/result.entity';
 import { Tournament } from './tournaments/entities/tournament.entity';
+import { ParticipantModule } from './participant/participant.module';
+import { Participant } from './participant/entities/participant.entity';
+
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -29,11 +29,12 @@ import { Tournament } from './tournaments/entities/tournament.entity';
       ssl: true,
     }
   }),
-  TypeOrmModule.forFeature([Participant, Player, Result, Tournament]),
+  TypeOrmModule.forFeature([ Player, Result, Tournament, Participant]),
     TournamentsModule,
     PlayersModule,
     ResultsModule,
-    ParticipantsModule],
+    ParticipantModule,
+    ],
   controllers: [],
   providers: [],
 })

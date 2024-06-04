@@ -1,22 +1,21 @@
-import { Player } from "src/players/entities/player.entity";
-import { Tournament } from "src/tournaments/entities/tournament.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+import { Participant } from "src/participant/entities/participant.entity";
+import { Column, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Result {
     @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Tournament, (tournament) => tournament.results)
-  tournament: Tournament;
-
-  @ManyToOne(() => Player, (player) => player.results)
-  player: Player;
-
-  @Column()
-  position: number;
 
   @Column()
   points: number;
+
+  @ManyToOne(() => Participant, participant => participant.results)
+  @JoinColumn({ name: 'participantId' }) 
+  participants: Participant;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 
 }

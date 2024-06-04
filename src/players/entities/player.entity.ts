@@ -1,27 +1,36 @@
-import { Participant } from "src/participants/entities/participant.entity";
+import { ApiProperty } from "@nestjs/swagger";
+import { Participant } from "src/participant/entities/participant.entity";
 import { Result } from "src/results/entities/result.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Player {
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   name: string;
 
+  @ApiProperty()
+  @Column()
+  email:string
+
+  @ApiProperty()
   @Column()
   alias: string;
 
+  @ApiProperty()
   @Column()
   nationality: string;
 
+  @ApiProperty()
   @Column()
   age: number;
-  
- @OneToMany(() => Participant, (participant) => participant.player)
- participants: Participant[];
 
- @OneToMany(() => Result, (result) => result.player)
-  results: Result[];
+  @OneToMany(() => Participant, (participants) => participants.player)
+  participants: Participant[];
+
+  @DeleteDateColumn()
+    deletedAt: Date;
 }
