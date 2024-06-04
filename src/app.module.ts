@@ -9,7 +9,7 @@ import { Result } from './results/entities/result.entity';
 import { Tournament } from './tournaments/entities/tournament.entity';
 import { ParticipantModule } from './participant/participant.module';
 import { Participant } from './participant/entities/participant.entity';
-import { MatchModule } from './match/match.module';
+
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -34,7 +34,6 @@ import { MatchModule } from './match/match.module';
     PlayersModule,
     ResultsModule,
     ParticipantModule,
-    MatchModule,
     ],
   controllers: [],
   providers: [],
