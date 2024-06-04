@@ -12,6 +12,19 @@ export class TournamentsController {
     return this.tournamentsService.create(createTournamentDto);
   }
 
+  @Post(":tournamentId/generate-matches")
+generateRandomMatches(@Param("tournamentId") tournamentId: number){
+    return this.tournamentsService.generateRandomMatches(tournamentId);
+}
+
+@Post("matches/result/:matchId")
+  registerMatchResult(
+    @Param("matchId") matchId: number,
+    @Body() matchResult: { winnerId: number; loserId: number; winnerScore: number; loserScore: number },
+  ) {
+    return this.tournamentsService.registerMatchResult(matchId, matchResult.winnerId, matchResult.loserId, matchResult.winnerScore, matchResult.loserScore);
+  }
+
   @Get()
   findAll() {
     return this.tournamentsService.findAll();
