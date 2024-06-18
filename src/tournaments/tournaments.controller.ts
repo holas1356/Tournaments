@@ -1,34 +1,35 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { TournamentsService } from './tournaments.service';
-import { CreateTournamentDto } from './dto/create-tournament.dto';
-import { UpdateTournamentDto } from './dto/update-tournament.dto';
+import { CreateRewardDto } from 'src/rewards/dto/create-reward.dto';
+import { UpdateRewardDto } from 'src/rewards/dto/update-reward.dto';
+import { RewardsService } from 'src/rewards/rewards.service';
 
-@Controller('tournaments')
-export class TournamentsController {
-  constructor(private readonly tournamentsService: TournamentsService) {}
+
+@Controller('rewards')
+export class RewardsController {
+  constructor(private readonly rewardsService: RewardsService) {}
 
   @Post()
-  create(@Body() createTournamentDto: CreateTournamentDto) {
-    return this.tournamentsService.create(createTournamentDto);
+  create(@Body() createRewardDto: CreateRewardDto) {
+    return this.rewardsService.create(createRewardDto);
   }
 
   @Get()
   findAll() {
-    return this.tournamentsService.findAll();
+    return this.rewardsService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.tournamentsService.findOne(+id);
+    return this.rewardsService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
-    return this.tournamentsService.update(+id, updateTournamentDto);
+  update(@Param('id') id: string, @Body() updateRewardDto: UpdateRewardDto) {
+    return this.rewardsService.update(+id, updateRewardDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.tournamentsService.remove(+id);
+    return this.rewardsService.remove(+id);
   }
 }
