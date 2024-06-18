@@ -10,6 +10,8 @@ import { Participant } from './participants/entities/participant.entity';
 import { Player } from './players/entities/player.entity';
 import { Result } from './results/entities/result.entity';
 import { Tournament } from './tournaments/entities/tournament.entity';
+import { RewardsModule } from './rewards/rewards.module';
+import { Reward } from './rewards/entities/reward.entity';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -29,11 +31,12 @@ import { Tournament } from './tournaments/entities/tournament.entity';
       ssl: true,
     }
   }),
-  TypeOrmModule.forFeature([Participant, Player, Result, Tournament]),
+  TypeOrmModule.forFeature([Participant, Player, Result, Tournament, Reward]),
     TournamentsModule,
     PlayersModule,
     ResultsModule,
-    ParticipantsModule],
+    ParticipantsModule,
+    RewardsModule],
   controllers: [],
   providers: [],
 })

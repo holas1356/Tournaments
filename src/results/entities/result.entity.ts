@@ -13,8 +13,10 @@ export class Result {
   @ManyToOne(() => Player, (player) => player.results)
   player: Player;
 
-  @Column()
-  position: number;
+  @Column({nullable: true})
+  position: number | null;
+
+  
 
   @Column()
   points: number;

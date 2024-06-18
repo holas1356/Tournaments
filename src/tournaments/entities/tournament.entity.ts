@@ -12,12 +12,12 @@ export class Tournament {
     @Column()
     name: string;
 
-    @Column()
-    startDate: Date;
+    @Column({nullable: true})
+    startDate: Date | null;
 
-    @Column()
-    endDate: Date;
-
+    @Column({nullable: true})
+    endDate: Date | null;
+    
     @Column()
     state: string;
 

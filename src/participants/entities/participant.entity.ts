@@ -13,6 +13,6 @@ export class Participant {
    @ManyToOne(() => Player, (player) => player.participants)
     player: Player; 
   
-    @Column()
-    registrationDate: Date;
+    @Column({nullable: true})
+    registrationDate: Date | null;
 }
